@@ -11,11 +11,18 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
+class HeadlineTableViewCell: UITableViewCell {
+
+  @IBOutlet weak var HeadLineTextLabel: UILabel!
+  @IBOutlet weak var HeadLineCostLabel: UILabel!
+}
+
 class TableViewController: UITableViewController {
   
     let URL = "http://localhost:3000/products.json"
 //    var productNameArray = ["hi", "hello"]
     var productNameArray = [String]()
+    var productCostArray = [String]()
   
     var currentItem = ""
 
@@ -31,8 +38,9 @@ class TableViewController: UITableViewController {
         if let forecastArray = forecastArray {
           for product in forecastArray {
             let productName:String? = product.name
-            print(productName)
+            let productCost:String? = product.cost
             self.productNameArray.append("\(productName ?? " ")")
+            self.productCostArray.append("\(productCost ?? " ")")
             
             self.tableView.reloadData()
           }
@@ -51,9 +59,11 @@ class TableViewController: UITableViewController {
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+          as! HeadlineTableViewCell
     
-        cell.textLabel?.text = productNameArray[indexPath.row]
-        print(productNameArray[indexPath.row])
+        cell.HeadLineTextLabel?.text = productNameArray[indexPath.row]
+        cell.HeadLineCostLabel?.text = productCostArray[indexPath.row]
+      
         return cell
     }
   
@@ -74,8 +84,8 @@ class ProductModel: Mappable {
   var id: Int?
   var name: String?
   var description: String?
-  var qty: Decimal?
-  var cost: Decimal?
+  var qty: String?
+  var cost: String?
   
   required init?(map: Map){
     

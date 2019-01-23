@@ -7,19 +7,36 @@
 //
 
 import UIKit
+import Kingfisher
+import Foundation
 
 class ViewController: UIViewController {
   
-  @IBOutlet weak var textView: UITextView!
-  var text = ""
+    @IBOutlet weak var ProductImageView: UIImageView!
+    @IBOutlet weak var ProductNameLabel: UILabel!
+    @IBOutlet weak var ProductDescriptionLabel: UITextView!
+    @IBOutlet weak var ProductCostLabel: UILabel!
+    
+    var product:ProductModel?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
+    }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    textView.text = text
-  }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        textView.text = product?.name
+        
+        let image = Foundation.URL(string: product?.avatar! ?? "")
+        let imageUrl = ImageResource(downloadURL: image!,cacheKey: "productImage")
+        
+        ProductImageView.kf.setImage(with:  imageUrl)
+        
+        ProductNameLabel.text = product?.name
+        ProductCostLabel.text = product?.cost
+        ProductDescriptionLabel.text = product?.description
+    }
+    
 }
 

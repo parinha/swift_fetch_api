@@ -24,37 +24,21 @@ class HeadlineTableViewCell: UITableViewCell {
 class TableViewController: UITableViewController {
   
     let URL = "https://swift-fetch-json-api-test.herokuapp.com/products.json"
-//    var productNameArray = ["hi", "hello"]
-    var productNameArray = [String]()
-    var productCostArray = [String]()
-    var productImageArray = [String]()
-  
-    var currentItem = ""
+    
+    var data:[ProductModel]?
+    var currentItem: ProductModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Products"
         self.getProducts()
-      
-      
     }
   
     func getProducts() {
       Alamofire.request(URL).responseArray { (response: DataResponse<[ProductModel]>) in
-        let productsArray = response.result.value
-        if let productsArray = productsArray {
-          for product in productsArray {
-            let productName:String? = product.name
-            let productCost:String? = product.cost
-            let productImage:String? = product.avatar
-            
-            self.productNameArray.append("\(productName ?? " ")")
-            self.productCostArray.append("\(productCost ?? " ")")
-            self.productImageArray.append("\(productImage ?? " ")")
-            
-            self.tableView.reloadData()
-          }
-        }
+        self.data = response.result.value
+        
+        self.tableView.reloadData()
       }
     }
 
@@ -63,7 +47,7 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productNameArray.count
+        return data?.count ?? 0
     }
 
   
@@ -71,26 +55,24 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
           as! HeadlineTableViewCell
       
-        let image = Foundation.URL(string: "\(productImageArray[indexPath.row])")
+        let image = Foundation.URL(string: "\(data![indexPath.row].avatar!)")
         let imageUrl = ImageResource(downloadURL: image!, cacheKey: "imageCache")
 
         cell.HeadLineImageView.kf.setImage(with:  imageUrl)
-    
-        cell.HeadLineTextLabel?.text = productNameArray[indexPath.row]
-        cell.HeadLineCostLabel?.text = productCostArray[indexPath.row]
+        cell.HeadLineTextLabel?.text = data![indexPath.row].name!
+        cell.HeadLineCostLabel?.text = data![indexPath.row].cost!
       
         return cell
     }
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      currentItem = productNameArray[indexPath.row]
-      print("productArray:", productNameArray)
-      performSegue(withIdentifier: "showDetail", sender: nil)
+        currentItem = data![indexPath.row]
+        performSegue(withIdentifier: "showDetail", sender: nil)
     }
   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let viewController = segue.destination as? ViewController {
-        viewController.text = currentItem
+        viewController.product = currentItem
       }
     }
 }

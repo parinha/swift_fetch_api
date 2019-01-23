@@ -14,19 +14,18 @@ class ViewController: UIViewController {
   
     @IBOutlet weak var ProductImageView: UIImageView!
     @IBOutlet weak var ProductNameLabel: UILabel!
-    @IBOutlet weak var ProductDescriptionLabel: UITextView!
+    @IBOutlet weak var ProductDescriptionLabel: UILabel!
     @IBOutlet weak var ProductCostLabel: UILabel!
     
     var product:ProductModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.title = product?.name
     }
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        textView.text = product?.name
         
         let image = Foundation.URL(string: product?.avatar! ?? "")
         let imageUrl = ImageResource(downloadURL: image!,cacheKey: "productImage")

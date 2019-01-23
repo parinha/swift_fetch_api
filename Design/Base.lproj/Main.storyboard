@@ -60,30 +60,41 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meD-Dt-u1Q">
-                                            <rect key="frame" x="5" y="5" width="365" height="44.5"/>
+                                            <rect key="frame" x="5" y="5" width="270" height="28"/>
                                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aju-F2-rGa">
-                                            <rect key="frame" x="10" y="59.5" width="360" height="15"/>
+                                            <rect key="frame" x="5" y="43" width="270" height="15"/>
                                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="11"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AMN-Ep-tcR">
+                                            <rect key="frame" x="275" y="0.0" width="100" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="A7l-ZV-ydm"/>
+                                                <constraint firstAttribute="height" constant="80" id="IXg-UJ-KLK"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="meD-Dt-u1Q" secondAttribute="trailing" constant="5" id="KIn-xr-gf9"/>
-                                        <constraint firstItem="meD-Dt-u1Q" firstAttribute="top" secondItem="tqb-Ab-7US" secondAttribute="top" constant="5" id="eNO-XM-Ojx"/>
-                                        <constraint firstAttribute="bottom" secondItem="aju-F2-rGa" secondAttribute="bottom" constant="5" id="gtw-tl-cgO"/>
-                                        <constraint firstAttribute="trailing" secondItem="aju-F2-rGa" secondAttribute="trailing" constant="5" id="kvo-Fq-0Qx"/>
-                                        <constraint firstItem="meD-Dt-u1Q" firstAttribute="leading" secondItem="tqb-Ab-7US" secondAttribute="leading" constant="5" id="p7K-y9-ZAU"/>
-                                        <constraint firstItem="aju-F2-rGa" firstAttribute="top" secondItem="meD-Dt-u1Q" secondAttribute="bottom" constant="10" id="pCa-Mj-GjH"/>
-                                        <constraint firstItem="aju-F2-rGa" firstAttribute="leading" secondItem="tqb-Ab-7US" secondAttribute="leading" constant="10" id="sIc-Nj-RjW"/>
+                                        <constraint firstAttribute="bottom" secondItem="aju-F2-rGa" secondAttribute="bottom" constant="5" id="87f-RL-1Hp"/>
+                                        <constraint firstItem="AMN-Ep-tcR" firstAttribute="top" secondItem="tqb-Ab-7US" secondAttribute="top" id="JlQ-4c-Or1"/>
+                                        <constraint firstItem="meD-Dt-u1Q" firstAttribute="top" secondItem="tqb-Ab-7US" secondAttribute="top" constant="5" id="Kkz-DJ-TDE"/>
+                                        <constraint firstItem="aju-F2-rGa" firstAttribute="leading" secondItem="tqb-Ab-7US" secondAttribute="leading" constant="5" id="T9I-4v-McW"/>
+                                        <constraint firstAttribute="bottom" secondItem="AMN-Ep-tcR" secondAttribute="bottom" id="aO6-e6-JIi"/>
+                                        <constraint firstAttribute="trailing" secondItem="meD-Dt-u1Q" secondAttribute="trailing" constant="100" id="cRq-8T-31I"/>
+                                        <constraint firstItem="aju-F2-rGa" firstAttribute="top" secondItem="meD-Dt-u1Q" secondAttribute="bottom" constant="10" id="chq-RQ-HA5"/>
+                                        <constraint firstAttribute="trailing" secondItem="aju-F2-rGa" secondAttribute="trailing" constant="100" id="gsH-9L-BzR"/>
+                                        <constraint firstAttribute="trailing" secondItem="AMN-Ep-tcR" secondAttribute="trailing" id="kDC-kI-g2d"/>
+                                        <constraint firstItem="meD-Dt-u1Q" firstAttribute="leading" secondItem="tqb-Ab-7US" secondAttribute="leading" constant="5" id="pG9-aj-cM5"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="HeadLineCostLabel" destination="aju-F2-rGa" id="ad2-lU-nbN"/>
+                                    <outlet property="HeadLineImageView" destination="AMN-Ep-tcR" id="GBc-zi-CaG"/>
                                     <outlet property="HeadLineTextLabel" destination="meD-Dt-u1Q" id="23a-sq-hDj"/>
                                 </connections>
                             </tableViewCell>

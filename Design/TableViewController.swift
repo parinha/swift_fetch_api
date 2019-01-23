@@ -23,7 +23,7 @@ class HeadlineTableViewCell: UITableViewCell {
 
 class TableViewController: UITableViewController {
   
-    let URL = "http://localhost:3000/products.json"
+    let URL = "https://swift-fetch-json-api-test.herokuapp.com/products.json"
 //    var productNameArray = ["hi", "hello"]
     var productNameArray = [String]()
     var productCostArray = [String]()

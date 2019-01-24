@@ -43,6 +43,7 @@ class TableViewController: UITableViewController {
     @IBOutlet weak var ProductSearchBar: UISearchBar!
     
     let URL = "https://swift-fetch-json-api-test.herokuapp.com/products.json"
+//    let URL = "http://localhost:3000/products.json"
     
     var data:[ProductModel]?
     var currentItem: ProductModel?
@@ -73,12 +74,8 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
-            print("isSearching numberOfRowsInSection")
-            print(searchingData?.count ?? 0)
             return searchingData?.count ?? 0
         } else {
-            print("isSearching false")
-            print(data?.count ?? 0)
             return data?.count ?? 0
         }
     }
@@ -95,8 +92,6 @@ class TableViewController: UITableViewController {
             cell.HeadLineImageView.kf.setImage(with:  imageUrl)
             cell.HeadLineTextLabel?.text = searchingData![indexPath.row].name!
             cell.HeadLineCostLabel?.text = searchingData![indexPath.row].cost!
-            
-            print("isSearching cellForRowAt")
         } else {
             let image = Foundation.URL(string: "\(data![indexPath.row].avatar!)")
             let imageUrl = ImageResource(downloadURL: image!, cacheKey: "imageCache")

@@ -10,6 +10,82 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--New Product-->
+        <scene sceneID="UNH-2c-eLH">
+            <objects>
+                <viewController id="WPB-fg-h7B" customClass="CreateProductViewController" customModule="Design" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qqb-6S-3kr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INo-T6-Rky">
+                                <rect key="frame" x="20" y="146" width="335" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="2Ob-gD-h5Y"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KfY-Iw-Kvr">
+                                <rect key="frame" x="20" y="208" width="335" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="PQA-XA-ZiZ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIo-xp-5Mf">
+                                <rect key="frame" x="20" y="270" width="335" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="y07-gK-Xbs"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE4-i8-nn6">
+                                <rect key="frame" x="20" y="352" width="335" height="52"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="nEL-pt-EA2"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="createButton:" destination="WPB-fg-h7B" eventType="touchUpInside" id="nbh-p2-wAG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QE4-i8-nn6" firstAttribute="top" secondItem="JIo-xp-5Mf" secondAttribute="bottom" constant="30" id="8ko-Mw-AvX"/>
+                            <constraint firstItem="2Ar-PP-GU5" firstAttribute="trailing" secondItem="QE4-i8-nn6" secondAttribute="trailing" constant="20" id="D3V-fD-2lW"/>
+                            <constraint firstItem="JIo-xp-5Mf" firstAttribute="leading" secondItem="2Ar-PP-GU5" secondAttribute="leading" constant="20" id="HDd-5N-jCO"/>
+                            <constraint firstItem="INo-T6-Rky" firstAttribute="leading" secondItem="2Ar-PP-GU5" secondAttribute="leading" constant="20" id="SgF-mi-IBJ"/>
+                            <constraint firstItem="2Ar-PP-GU5" firstAttribute="trailing" secondItem="KfY-Iw-Kvr" secondAttribute="trailing" constant="20" id="Wz2-Wq-6Gg"/>
+                            <constraint firstItem="2Ar-PP-GU5" firstAttribute="trailing" secondItem="INo-T6-Rky" secondAttribute="trailing" constant="20" id="dZG-YP-02R"/>
+                            <constraint firstItem="2Ar-PP-GU5" firstAttribute="trailing" secondItem="JIo-xp-5Mf" secondAttribute="trailing" constant="20" id="dbw-8r-c4g"/>
+                            <constraint firstItem="KfY-Iw-Kvr" firstAttribute="leading" secondItem="2Ar-PP-GU5" secondAttribute="leading" constant="20" id="grK-1X-BmN"/>
+                            <constraint firstItem="JIo-xp-5Mf" firstAttribute="top" secondItem="KfY-Iw-Kvr" secondAttribute="bottom" constant="10" id="iSh-GC-aQy"/>
+                            <constraint firstItem="INo-T6-Rky" firstAttribute="top" secondItem="2Ar-PP-GU5" secondAttribute="top" constant="30" id="kCb-xQ-dIn"/>
+                            <constraint firstItem="KfY-Iw-Kvr" firstAttribute="top" secondItem="INo-T6-Rky" secondAttribute="bottom" constant="10" id="nU3-0U-rQ4"/>
+                            <constraint firstItem="QE4-i8-nn6" firstAttribute="leading" secondItem="2Ar-PP-GU5" secondAttribute="leading" constant="20" id="psO-Ko-f9C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2Ar-PP-GU5"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Product" id="CMj-c7-qVq"/>
+                    <connections>
+                        <outlet property="costTextField" destination="KfY-Iw-Kvr" id="r4R-45-cus"/>
+                        <outlet property="descriptionTextField" destination="JIo-xp-5Mf" id="v5r-B4-aSH"/>
+                        <outlet property="nameTextField" destination="INo-T6-Rky" id="mQy-tM-cNE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mys-Ox-Nlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1153" y="-578"/>
+        </scene>
         <!--Product Details-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -167,7 +243,13 @@
                             <outlet property="delegate" destination="kbc-gK-ejU" id="Wp5-6b-qMo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="A4u-pf-ejK"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="A4u-pf-ejK">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="pza-Hn-vAt">
+                            <connections>
+                                <segue destination="WPB-fg-h7B" kind="show" id="fCf-MT-EF7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ProductSearchBar" destination="3mW-aT-TWb" id="Alk-Vh-zgI"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showDetail" id="ED7-Vu-fvS"/>

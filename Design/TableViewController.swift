@@ -41,6 +41,7 @@ extension TableViewController: UISearchBarDelegate {
 class TableViewController: UITableViewController {
   
     @IBOutlet weak var ProductSearchBar: UISearchBar!
+//    var refreshControl: UIRefreshControl?
     
     let URL = "https://swift-fetch-json-api-test.herokuapp.com/products.json"
 //    let URL = "http://localhost:3000/products.json"
@@ -56,8 +57,21 @@ class TableViewController: UITableViewController {
         ProductSearchBar.placeholder = "Search Product"
         ProductSearchBar.delegate = self
         
-        
         self.getProducts()
+        self.addRefreshControl()
+    }
+    
+    func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to reload!")
+        refreshControl?.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        self.tableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshData() {
+        self.getProducts()
+        self.tableView.reloadData()
+        refreshControl?.endRefreshing()
     }
     
     func getProducts() {
@@ -98,7 +112,7 @@ class TableViewController: UITableViewController {
             
             cell.HeadLineImageView.kf.setImage(with:  imageUrl)
             cell.HeadLineTextLabel?.text = data![indexPath.row].name!
-            cell.HeadLineCostLabel?.text = data![indexPath.row].cost!
+            cell.HeadLineCostLabel?.text = "$\(data![indexPath.row].cost!)"
         }
       
         return cell
@@ -142,4 +156,3 @@ class ProductModel: Mappable {
     avatar <- map["avatar"]
   }
 }
-

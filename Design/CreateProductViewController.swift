@@ -26,10 +26,9 @@ class CreateProductViewController: UIViewController {
         
     }
     
-    
     @IBAction func createButton(_ sender: Any) {
         let productName = nameTextField.text
-        let productCost = (costTextField.text as! NSString).doubleValue
+        let productCost = (costTextField.text! as NSString).doubleValue
         let productDescription = descriptionTextField.text
         
         if (productName!.isEmpty || productDescription!.isEmpty) {
@@ -57,12 +56,20 @@ class CreateProductViewController: UIViewController {
                 "product[avatar]": "https://via.placeholder.com/300"
             ]
             
-            print(parameters)
-            
             Alamofire.request(URL, method: .post, parameters: parameters, encoding: URLEncoding.default)
+                .validate().responseString { response in
+                    switch response.result {
+                        case .success:
+                            print("Validation Successful")
+                            self.navigationController?.popViewController(animated: true)
+                        
+                        case .failure(let error):
+                            print("Validation error")
+                            print(error)
+                    }
+                }
         }
     }
-    
     
 
     /*

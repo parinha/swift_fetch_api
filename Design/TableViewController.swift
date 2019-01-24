@@ -53,7 +53,12 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Products"
-        ProductSearchBar.placeholder = "Search Product"
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        ProductSearchBar.placeholder = "Search"
         ProductSearchBar.delegate = self
         
         self.getProducts()

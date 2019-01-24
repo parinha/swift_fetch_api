@@ -21,19 +21,44 @@ class HeadlineTableViewCell: UITableViewCell {
   @IBOutlet weak var HeadLineImageView: UIImageView!
 }
 
+extension TableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            isSearching = false
+            self.tableView.reloadData()
+        } else {
+            searchingData = data?.filter {
+                $0.name?.range(of: searchBar.text!, options: [.caseInsensitive, .diacriticInsensitive ]) != nil ||
+                $0.cost?.range(of: searchBar.text!, options: [.caseInsensitive, .diacriticInsensitive ]) != nil
+            }
+            isSearching = true
+            self.tableView.reloadData()
+        }
+    }
+}
+
 class TableViewController: UITableViewController {
   
+    @IBOutlet weak var ProductSearchBar: UISearchBar!
+    
     let URL = "https://swift-fetch-json-api-test.herokuapp.com/products.json"
     
     var data:[ProductModel]?
     var currentItem: ProductModel?
+    var searchingData:[ProductModel]?
+    var isSearching = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Products"
+        ProductSearchBar.placeholder = "Search Product"
+        ProductSearchBar.delegate = self
+        
+        
         self.getProducts()
     }
-  
+    
     func getProducts() {
       Alamofire.request(URL).responseArray { (response: DataResponse<[ProductModel]>) in
         self.data = response.result.value
@@ -47,20 +72,39 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data?.count ?? 0
+        if isSearching {
+            print("isSearching numberOfRowsInSection")
+            print(searchingData?.count ?? 0)
+            return searchingData?.count ?? 0
+        } else {
+            print("isSearching false")
+            print(data?.count ?? 0)
+            return data?.count ?? 0
+        }
     }
 
   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
           as! HeadlineTableViewCell
-      
-        let image = Foundation.URL(string: "\(data![indexPath.row].avatar!)")
-        let imageUrl = ImageResource(downloadURL: image!, cacheKey: "imageCache")
-
-        cell.HeadLineImageView.kf.setImage(with:  imageUrl)
-        cell.HeadLineTextLabel?.text = data![indexPath.row].name!
-        cell.HeadLineCostLabel?.text = data![indexPath.row].cost!
+        
+        if isSearching {
+            let image = Foundation.URL(string: "\(searchingData![indexPath.row].avatar!)")
+            let imageUrl = ImageResource(downloadURL: image!, cacheKey: "imageCache")
+            
+            cell.HeadLineImageView.kf.setImage(with:  imageUrl)
+            cell.HeadLineTextLabel?.text = searchingData![indexPath.row].name!
+            cell.HeadLineCostLabel?.text = searchingData![indexPath.row].cost!
+            
+            print("isSearching cellForRowAt")
+        } else {
+            let image = Foundation.URL(string: "\(data![indexPath.row].avatar!)")
+            let imageUrl = ImageResource(downloadURL: image!, cacheKey: "imageCache")
+            
+            cell.HeadLineImageView.kf.setImage(with:  imageUrl)
+            cell.HeadLineTextLabel?.text = data![indexPath.row].name!
+            cell.HeadLineCostLabel?.text = data![indexPath.row].cost!
+        }
       
         return cell
     }
@@ -98,3 +142,4 @@ class ProductModel: Mappable {
     avatar <- map["avatar"]
   }
 }
+

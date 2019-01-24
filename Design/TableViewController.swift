@@ -41,7 +41,6 @@ extension TableViewController: UISearchBarDelegate {
 class TableViewController: UITableViewController {
   
     @IBOutlet weak var ProductSearchBar: UISearchBar!
-//    var refreshControl: UIRefreshControl?
     
     let URL = "https://swift-fetch-json-api-test.herokuapp.com/products.json"
 //    let URL = "http://localhost:3000/products.json"
@@ -70,7 +69,6 @@ class TableViewController: UITableViewController {
     
     @objc func refreshData() {
         self.getProducts()
-        self.tableView.reloadData()
         refreshControl?.endRefreshing()
     }
     

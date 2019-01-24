@@ -110,7 +110,12 @@ class TableViewController: UITableViewController {
     }
   
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currentItem = data![indexPath.row]
+        if isSearching {
+            currentItem = searchingData![indexPath.row]
+        } else {
+            currentItem = data![indexPath.row]
+        }
+        
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
   

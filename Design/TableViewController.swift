@@ -53,12 +53,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Products"
-    
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedString.Key.font: UIFont(name: "Avenir", size: 21)!]
-        
+
         ProductSearchBar.placeholder = "Search"
         ProductSearchBar.delegate = self
         

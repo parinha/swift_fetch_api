@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var ProductImageView: UIImageView!
     @IBOutlet weak var ProductNameLabel: UILabel!
     @IBOutlet weak var ProductDescriptionLabel: UILabel!
+    @IBAction func backBarButton(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBOutlet weak var ProductCostLabel: UILabel!
     
     var product:ProductModel?

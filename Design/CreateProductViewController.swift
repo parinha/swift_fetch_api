@@ -12,6 +12,9 @@ import Alamofire
 class CreateProductViewController: UIViewController {
 
 
+    @IBAction func backBarButton(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var costTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -22,8 +25,7 @@ class CreateProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
+        navigationItem.title = "New Product"
     }
     
     @IBAction func createButton(_ sender: Any) {

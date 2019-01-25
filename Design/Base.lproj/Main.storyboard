@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="WPB-fg-h7B" customClass="CreateProductViewController" customModule="Design" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qqb-6S-3kr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INo-T6-Rky">
-                                <rect key="frame" x="20" y="146" width="335" height="52"/>
+                                <rect key="frame" x="20" y="30" width="335" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="2Ob-gD-h5Y"/>
                                 </constraints>
@@ -28,7 +28,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KfY-Iw-Kvr">
-                                <rect key="frame" x="20" y="208" width="335" height="52"/>
+                                <rect key="frame" x="20" y="92" width="335" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="PQA-XA-ZiZ"/>
                                 </constraints>
@@ -37,7 +37,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIo-xp-5Mf">
-                                <rect key="frame" x="20" y="270" width="335" height="52"/>
+                                <rect key="frame" x="20" y="154" width="335" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="y07-gK-Xbs"/>
                                 </constraints>
@@ -46,7 +46,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE4-i8-nn6">
-                                <rect key="frame" x="20" y="352" width="335" height="52"/>
+                                <rect key="frame" x="20" y="236" width="335" height="52"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="nEL-pt-EA2"/>
@@ -75,7 +75,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Ar-PP-GU5"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Product" id="CMj-c7-qVq"/>
+                    <navigationItem key="navigationItem" title="New Product" id="CMj-c7-qVq">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="long-arrow-alt-left" id="6o6-EO-ZfI">
+                            <connections>
+                                <action selector="backBarButton:" destination="WPB-fg-h7B" id="5Eb-ix-wgT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="costTextField" destination="KfY-Iw-Kvr" id="r4R-45-cus"/>
                         <outlet property="descriptionTextField" destination="JIo-xp-5Mf" id="v5r-B4-aSH"/>
@@ -164,7 +170,12 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Title" id="Sog-LF-0qX">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="B7t-sM-vQz"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="long-arrow-alt-left" id="Dla-AV-lFs">
+                            <connections>
+                                <action selector="backBarButton:" destination="BYZ-38-t0r" id="0kP-ZK-Yfz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="cart-plus" id="B7t-sM-vQz"/>
                     </navigationItem>
                     <connections>
                         <outlet property="ProductCostLabel" destination="uvN-KE-8LN" id="0hI-YQ-NRG"/>
@@ -182,18 +193,22 @@
             <objects>
                 <tableViewController id="kbc-gK-ejU" customClass="TableViewController" customModule="Design" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UVm-Qs-SMU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="3mW-aT-TWb">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" translucent="NO" id="3mW-aT-TWb">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="barTintColor" red="0.47610259056091309" green="0.17342329025268555" blue="0.86675435304641724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="barTintColor" red="0.29826027154922485" green="0.44529753923416138" blue="0.96479743719100952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="69" id="YmE-lm-och" customClass="HeadlineTableViewCell" customModule="Design" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="69"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YmE-lm-och" id="tqb-Ab-7US">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="68.5"/>
@@ -245,7 +260,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="A4u-pf-ejK">
-                        <barButtonItem key="rightBarButtonItem" title="New" id="pza-Hn-vAt">
+                        <barButtonItem key="rightBarButtonItem" title="New" image="addition-sign" id="pza-Hn-vAt">
                             <connections>
                                 <segue destination="WPB-fg-h7B" kind="show" id="fCf-MT-EF7"/>
                             </connections>
@@ -265,7 +280,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tnd-2G-qAo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="rnD-GJ-jBV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="rnD-GJ-jBV">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -279,4 +294,9 @@
             <point key="canvasLocation" x="-634.39999999999998" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addition-sign" width="24" height="24"/>
+        <image name="cart-plus" width="27" height="24"/>
+        <image name="long-arrow-alt-left" width="42" height="24"/>
+    </resources>
 </document>
